@@ -17,6 +17,72 @@ Page({
       url: '../logs/logs'
     })
   },
+  dlt() {
+    var result
+    wx.request({
+      url: "http://lizhuozhao.com/dlt",
+      success: function (res) {
+        result = res.data
+        wx.showModal({
+          title: res.data.name,
+          content: res.data.message,
+          success: function (res) {
+            if (res.confirm) { //这里是点击了确定以后
+              console.log('用户点击确定')
+              wx.setClipboardData({
+                data: result.name+":"+result.message,//要复制的数据
+                success (res) {
+                  wx.getClipboardData({
+                    success (res) {
+                      console.log(res.data) // data
+                    }
+                  })
+                }
+              })
+            } else { //这里是点击了取消以后
+              console.log('用户点击取消')
+            }
+          }
+        })
+      },
+      fail: function (err) {
+        console.log(err)
+      }
+    })
+  },
+  ssq() {
+    var result
+    wx.request({
+      url: "http://lizhuozhao.com/ssq",
+      success: function (res) {
+        result = res.data
+        wx.showModal({
+          title: res.data.name,
+          content: res.data.message,
+          success: function (res) {
+            if (res.confirm) { //这里是点击了确定以后
+              console.log('用户点击确定')
+              wx.setClipboardData({
+                data: result.name+":"+result.message,//要复制的数据
+                success (res) {
+                  wx.getClipboardData({
+                    success (res) {
+                      console.log(res.data) // data
+                    }
+                  })
+                }
+              })
+            } else { //这里是点击了取消以后
+              console.log('用户点击取消')
+            }
+          }
+        })
+      },
+      fail: function (err) {
+        console.log(err)
+      }
+    })
+  },
   onLoad() {
     if (wx.getUserProfile) {
       this.setData({
@@ -45,4 +111,5 @@ Page({
       hasUserInfo: true
     })
   }
+
 })

@@ -5,6 +5,8 @@
       <view class="userinfo-avatar" bindtap="bindViewTap">
         <open-data type="userAvatarUrl"></open-data>
       </view>
+      <button bindtap="dlt">大乐透</button>
+      <button bindtap="ssq">双色球</button>
       <open-data type="userNickName"></open-data>
     </block>
     <block wx:elif="{{!hasUserInfo}}">
@@ -17,10 +19,6 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
 
-  <button>大乐透</button>
-  <button>双色球</button>
+  
 </view>
